@@ -22,12 +22,12 @@ public class StudentListAction extends Action {
 		//Teacher teacher = (Teacher)session.getAttribute("user");
 		//テスト用に学校オブジェクトと講師オブジェクトを一時的に作る
 		School school = new School();
-		school.setCd("tes"); //学校コードをセットする
-		school.setName("テスト校"); //学校名をセットする
+		school.setCd("oom"); //学校コードをセットする
+		school.setName("大宮校"); //学校名をセットする
 
 		Teacher teacher = new Teacher();
-		teacher.setId("admin1"); //講師IDをセット
-		teacher.setName("管理者1"); //講師名をセット
+		teacher.setId("admin"); //講師IDをセット
+		teacher.setName("大原花子"); //講師名をセット
 		teacher.setPassword("password"); //ログインパスワードをセット
 		teacher.setSchool(school); //学校オブジェクトをセット
 
@@ -50,9 +50,9 @@ public class StudentListAction extends Action {
 //		isAttendStr = request.getParameter("f3");
 
 		entYearStr = "2023";
-		classNum = "101";
-		isAttend = true;
+		classNum = "131";
 		isAttendStr = "checked";
+
 
 		//DBからデータ取得3
 		//ログインユーザーの学校コードをもとにクラス番号の一覧を取得
@@ -62,7 +62,7 @@ public class StudentListAction extends Action {
 		if(entYear != 0 && !classNum.equals("0")){
 			//入学年度とクラス番号を指定
 			students = sDao.filter(teacher.getSchool(), entYear, classNum, isAttend);
-		}else if(entYear != 0 && classNum == null || entYear == 0 && classNum.equals("0")){
+		}else if(entYear != 0 && classNum.equals("0")){
 			//入学年度のみ指定
 			students = sDao.filter(teacher.getSchool(), entYear, isAttend);
 		}else if(entYear == 0 && classNum == null || entYear == 0 && classNum.equals("0")){
